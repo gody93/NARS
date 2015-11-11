@@ -1,0 +1,20 @@
+vector<string> lineSplit(string line, char delim)
+{
+    vector<string> result;
+    string temp;
+    int current;
+    int next = -1;
+    do
+    {
+        current = next + 1;
+        next = line.find_first_of(delim,current);
+        temp.assign(line,current,next - current);
+        result.push_back(temp);
+    } while (next != string::npos);
+    if (result.size() == 1)
+    {
+        cout << "The delimeter wasn't found in the text!" <<endl;
+        exit(1);
+    }
+    return result;
+}
